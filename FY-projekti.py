@@ -91,13 +91,6 @@ for i in range(len(df_Location)-1):
     df_Location.loc[i+1, 'Distance calculated'] = haversine(lon1, lat1, lon2, lat2)
 
 df_Location['Total distance'] = df_Location['Distance calculated'].cumsum()
-#plt.plot(df_Location['Time (s)'],df_Location['Distance calculated'])
-plt.plot(df_Location['Time (s)'],df_Location['Total distance'])
-plt.grid()
-
-plt.ylabel('Kokonaismatka')
-plt.xlabel('Aika')
-plt.show()
 
 distanceKm = df_Location['Total distance'][(len(df_Location['Total distance'])-1)]
 distanceM =  distanceKm * 1000
@@ -185,7 +178,7 @@ with tab2:
     #Draw line plot
     fig, ax = plt.subplots(figsize=(10,5))
     ax.plot(freq[Limit],psd[Limit].real)
-    ax.set(xlabel='Taajuus Hz = [Hz] = [1/s]', ylabel='Teho', title='Tehospektri')
+    ax.set(xlabel='Taajuus Hz', ylabel='Teho', title='Tehospektri')
     ax.axis([0,14,0,11000])
     ax.grid()
     ax.legend()
@@ -246,9 +239,3 @@ st_map = st_folium(my_map, width= 900, height= 650 )
 st.divider()
 
 st.write("*Apuna on käytetty Soveltavan matematiikan ja fysiikan kurssin kurssimateriaalia sekä Streamlitin ja Matplotlibin dokumentaatiota.*")
-
-
-st.markdown("*Streamlit* is **really** ***cool***.")
-st.markdown('''
-    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
