@@ -210,12 +210,9 @@ with tab4:
     plt.grid()
     st.pyplot(fig)
 
-#-----------------------------------
-
-
-#-----------------------------------
 st.divider()
 
+#-----------------------------------
 #Map
 st.header('Reitti kartalla')
 st.write("Datan pohjalta piirrettyy kuljettu reitti kartalla.")
