@@ -156,11 +156,11 @@ st.divider()
 #-----------------------------------
 #Tabs
 st.header("Datasta luotuja kuvaajia")
-tab1, tab2, tab3, tab4 = st.tabs(["Suodatettu kiihtyvyysdata", "Tehospektritiheys", "Mitattu data", "Kuljettu matka"])
+tab1, tab2, tab3, tab4 = st.tabs(["Suodatettu kiihtyvyysdata", "Tehospektritiheys", "Kuljettu matka", "Alkuperäinen mitattu data"])
 
 with tab1:
     st.subheader('Suodatettu kiihtyvyysdata')
-    st.write("Suodatettu kiihtyvyysdataa on käytetty askelmäärän määrittelemiseen. Askeldataa on 6 minuuttia, joten tässä on leikattu osio siitä, josta näkee askeleet.")
+    st.write("Suodatetun kiihtyvyysdatan lähtökohtana on z-komponentti.Askeldataa on 6 minuuttia, joten tässä kuvaajassa on leikattu osio siitä, josta näkee hyvin askeleet. Tätä suodatettu kiihtyvyysdataa on käytetty askelmäärän määrittelemiseen.")
 
     #Draw line plot
     fig, ax = plt.subplots(figsize=(10,5))
@@ -185,19 +185,8 @@ with tab2:
     #st.line_chart(df, x='Time (s)', y='Linear Acceleration x (m/s^2)', y_label="Teho", x_label="Taajuus")
 
 with tab3:
-    st.subheader('Mitattu data')
-    st.write("Tähän kuvaajaan on piirretty data alkutilanteessa ennen kuin sitä on lähdetty operoimaan. Kuvaajasta huomaa hyvin, kuinka nopeus nousee hitaasta kävelystä reippaaseen kävelyyn ja reippaasta kävelystä juoksuun. Noissa kohdissa kiihtyvyys kasvaa.")
-    
-    #Draw line plot
-    fig, ax = plt.subplots(figsize=(12,5))
-    plt.plot(df_Linear['Time (s)'],data)
-    ax.set(xlabel='Aika', ylabel='Kiihtyvyys z', title='Alkuperäinen data')
-    plt.grid()
-    st.pyplot(fig)
-
-with tab4:
     st.subheader('Kuljettu matka')
-    st.write("Kuljettu matka on laskettu datapisteiden välisestä matkasta Haversine-funktion avulla. Kuvaajaan on nuolilla piirretty kohdat, joissa etenemisnopeus kasvaa ja tässä tapauksessa matkan kertymä kasvaa nopeammin (eli jyrkempi viiva).")
+    st.write("Kuljettu matka on laskettu datapisteiden välisestä matkasta Haversine-funktion avulla. Kuvaajaan on nuolilla piirretty kohdat, joissa kävelynopeus kasvaa. Kävelynopeuden kasvaessa matkaa kertyy nopeammin ja siksi viivan nousu jyrkkenee.")
 
     #Draw line plot
     fig, ax = plt.subplots(figsize=(10,5))
@@ -207,6 +196,17 @@ with tab4:
             arrowprops=dict(facecolor='black', shrink=0.05))
     ax.annotate('Reipas kävelys --> juoksu', xy=(290, 0.412), xytext=(140, 0.55),
             arrowprops=dict(facecolor='black', shrink=0.05))
+    plt.grid()
+    st.pyplot(fig)
+
+with tab4:
+    st.subheader('Mitattu data')
+    st.write("Tähän kuvaajaan on piirretty data alkutilanteessa ennen kuin sitä on lähdetty operoimaan. Kuvaajasta huomaa hyvin, kuinka nopeus nousee hitaasta kävelystä reippaaseen kävelyyn ja reippaasta kävelystä juoksuun. Noissa kohdissa kiihtyvyys kasvaa eli sininen osuus kasvaa korkeussuunnassa.")
+    
+    #Draw line plot
+    fig, ax = plt.subplots(figsize=(12,5))
+    plt.plot(df_Linear['Time (s)'],data)
+    ax.set(xlabel='Aika', ylabel='Kiihtyvyys z', title='Alkuperäinen data')
     plt.grid()
     st.pyplot(fig)
 
