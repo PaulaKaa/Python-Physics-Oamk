@@ -231,4 +231,4 @@ folium.PolyLine(df[['Latitude (°)','Longitude (°)']], color = 'red', weight = 
 st_map = st_folium(my_map, width= 900, height= 650 ) 
 st.divider()
 
-st.write("*Apuna on käytetty Soveltavan matematiikan ja fysiikan kurssin kurssimateriaalia sekä Streamlitin ja Matplotlibin dokumentaatiota.*")
+st.write("*Apuna on käytetty Soveltavan matematiikan ja fysiikan kurssin kurssimateriaalia sekä Streamlitin ja Matplotlibin dokumentaatiota. Hymiöt on otettu: https://gist.github.com/rxaviers/7360908*")
