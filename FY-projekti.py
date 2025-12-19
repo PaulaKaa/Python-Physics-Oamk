@@ -168,7 +168,6 @@ with tab1:
     ax.set(xlabel='Aika', ylabel='Kiihtyvyys z', title='Suodatettu data')
     plt.axis([200,215,-7,7])
     plt.grid()
-    plt.legend()
     st.pyplot(fig)
 
 with tab2:
@@ -181,7 +180,6 @@ with tab2:
     ax.set(xlabel='Taajuus Hz', ylabel='Teho', title='Tehospektri')
     ax.axis([0,14,0,11000])
     ax.grid()
-    ax.legend()
     st.pyplot(fig)
 
     #st.line_chart(df, x='Time (s)', y='Linear Acceleration x (m/s^2)', y_label="Teho", x_label="Taajuus")
@@ -195,7 +193,6 @@ with tab3:
     plt.plot(df_Linear['Time (s)'],data)
     ax.set(xlabel='Aika', ylabel='Kiihtyvyys z', title='Alkuperäinen data')
     plt.grid()
-    plt.legend()
     st.pyplot(fig)
 
 with tab4:
@@ -211,7 +208,6 @@ with tab4:
     ax.annotate('Reipas kävelys --> juoksu', xy=(290, 0.412), xytext=(140, 0.55),
             arrowprops=dict(facecolor='black', shrink=0.05))
     plt.grid()
-    plt.legend()
     st.pyplot(fig)
 
 #-----------------------------------
